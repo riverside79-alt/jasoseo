@@ -36,19 +36,19 @@ async function send() {
 
   try {
     const res = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer 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"
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: "너는 자소서 피드백 코치야. 문장을 자연스럽고 구체적으로 다듬어줘." },
-          { role: "user", content: text }
-        ]
-      })
-    });
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer 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" // ← 실제 키
+  },
+  body: JSON.stringify({
+    model: "gpt-4o-mini",
+    messages: [
+      { role: "system", content: "너는 자소서 피드백 코치야. 문장을 자연스럽고 구체적으로 다듬어줘." },
+      { role: "user", content: text }
+    ]
+  })
+});
     const data = await res.json();
     result.innerText = data.choices?.[0]?.message?.content || "⚠️ GPT 응답이 없습니다.";
   } catch (err) {
